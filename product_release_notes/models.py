@@ -26,10 +26,11 @@ class ClientIcons(object):
 @python_2_unicode_compatible
 class Client(models.Model):
     """
-    Android, iOS, Web
+    앱 이름
     """
-
-    name = models.CharField(max_length=255)
+    name = models.CharField(max_length=255, help_text='앱 이름')
+    appMangeName = models.CharField(max_length=255, help_text='앱 담당자', default='')
+    serverMangeName = models.CharField(max_length=255, help_text='서버 담당자', default='')
     icon = models.CharField(
         max_length=20, choices=ClientIcons.CHOICES, default=ClientIcons.DESKTOP
     )
@@ -68,7 +69,7 @@ class ReleaseNotesManager(models.Manager):
         print(_id)
         return self.filter(
             client=_id
-        ).select_related('client')
+        ).order_by('-version').select_related('client')
 
 
 @python_2_unicode_compatible
@@ -76,15 +77,15 @@ class ReleaseNote(models.Model):
     client = models.ForeignKey(
         Client, related_name='release_notes',
         on_delete=models.CASCADE,
-        help_text='Examples: iOS, Android, Web'
+        help_text='앱 선택'
     )
 
-    notes = models.TextField()
-    release_date = models.DateField(default=datetime.today)
+    name = models.CharField(max_length=255, help_text='작성자', blank=True)
+    notes = models.TextField(help_text='수정 사항')
+    release_date = models.DateField(default=datetime.today, help_text='변경일')
     version = models.CharField(max_length=255, blank=True, db_index=True)
 
-    is_published = models.BooleanField(
-        default=False, help_text='Check this box when you\'re ready to publish')
+    is_published = models.BooleanField(default=False, help_text='해당 버전으로 출시 하였는가?')
 
     created = models.DateTimeField(auto_now_add=True)
     modified = models.DateTimeField(auto_now=True)

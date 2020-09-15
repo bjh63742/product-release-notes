@@ -33,9 +33,6 @@
 {% block release_notes_body_header %}
 	<div class="text-center m-t-lg m-b-lg">
 		<h1 class="font-light">스마트 개발 2팀 릴리즈 노트</h1>
-		{% if page_description %}
-			<p>{{ page_description }}</p>
-		{% endif %}
 	</div>
 {% endblock %}
 
@@ -43,10 +40,10 @@
 	<div class="container">
 		<div class="row">
 			<div class="col-md-8 col-md-offset-2">
+				<h3> 앱 목록</h3>
+				<br>
 				{% for client in clients %}	
-					<li>
-						<a href="/{{client.id}}">{{client.name}}</a>
-					</li>
+					<h3><li><a href="/{{client.id}}">{{client.name}}</a></li></h3>
 				{% endfor %}
 			</div>
 		</div>

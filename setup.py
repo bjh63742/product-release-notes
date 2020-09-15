@@ -10,7 +10,7 @@ from setuptools import Command, find_packages, setup
 NAME = 'product_release_notes'
 DESCRIPTION = 'Release notes page for your product.'
 URL = 'https://github.com/nickromano/product-release-notes'
-EMAIL = 'nick.r.romano@gmail.com'
+EMAIL = 'bjh@'
 AUTHOR = 'Nick Romano'
 
 here = os.path.abspath(os.path.dirname(__file__))

@@ -32,10 +32,7 @@
 
 {% block release_notes_body_header %}
 	<div class="text-center m-t-lg m-b-lg">
-		<h1 class="font-light">Release Notes</h1>
-		{% if page_description %}
-			<p>{{ page_description }}</p>
-		{% endif %}
+		<h1 class="font-light">{{appName}} Release Notes</h1>
 	</div>
 {% endblock %}
 
@@ -50,14 +47,14 @@
 								<div class="release-note-header m-b-sm">
 									<p class="font-light" style="font-size: 24px; margin-bottom: 0; display: inline-block;">
 										<i class="fa fa-{{ release_note.client.icon }}"></i>
-										{{ release_note.client.name }}
-										{% if release_note.version %} &middot; Version: {{ release_note.version }}{% endif %}
+										{% if release_note.version %} &nbsp; Version: {{ release_note.version }}{% endif %}
 									</p>
 									<span class="latest-label">Latest</span>
 								</div>
 								<div class="text-upper font-bold m-b-sm">
-										릴리즈: {{ release_note.release_date.year }} 년 {{ release_note.release_date.month }} 월 {{ release_note.release_date.day }} 일
-									</div>
+										변경일: {{ release_note.release_date.year }} 년 {{ release_note.release_date.month }} 월 {{ release_note.release_date.day }} 일
+										{% if release_note.name %} &nbsp;작성자: {{ release_note.name }}{% endif %}
+								</div>
 								<div class="markdown">
 									{{ release_note.notes|from_markdown }}
 								</div>

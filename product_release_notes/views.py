@@ -9,11 +9,13 @@ from .models import Client
 
 def release_notes_list(request,client_id):
     release_notes = ReleaseNote.objects.relasedByid(client_id)
+    client = Client.objects.filter(id=client_id)
+    print(client[0].name)
 
     return render(request, 'release_notes/list.html', {
+        'appName': client[0].name,
         'release_notes': release_notes,
         'product_name': getattr(settings, 'RELEASE_NOTES_PRODUCT_NAME', ''),
-        'page_description': getattr(settings, 'RELEASE_NOTES_PAGE_DESCRIPTION', ''),
         'embed': bool(request.GET.get('embed'))
     })
 
