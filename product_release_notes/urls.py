@@ -1,11 +1,13 @@
 from __future__ import absolute_import, unicode_literals
 
-from django.conf.urls import url
+from django.urls import path
 
 from .views import release_notes_list
+from .views import release_notes_clients
 from .feed import ReleaseNotesFeed
 
 urlpatterns = [
-    url(r'^$', release_notes_list, name='release-notes'),
-    url(r'^feed/$', ReleaseNotesFeed(), name='release-notes-feed'),
+    path('', release_notes_clients),
+    path('<int:client_id>', release_notes_list),
+    path('feed', ReleaseNotesFeed(), name='release-notes-feed'),
 ]

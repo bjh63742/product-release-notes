@@ -56,7 +56,7 @@
 									<span class="latest-label">Latest</span>
 								</div>
 								<div class="text-upper font-bold m-b-sm">
-										Released {{ release_note.release_date }}
+										릴리즈: {{ release_note.release_date.year }} 년 {{ release_note.release_date.month }} 월 {{ release_note.release_date.day }} 일
 									</div>
 								<div class="markdown">
 									{{ release_note.notes|from_markdown }}
@@ -64,6 +64,7 @@
 							</div>
 						</div>
 					</div>
+					<br>
 				{% endfor %}
 			</div>
 		</div>

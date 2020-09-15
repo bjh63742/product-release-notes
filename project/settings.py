@@ -72,6 +72,9 @@ TEMPLATES = [
     },
 ]
 
+TIME_ZONE = 'Asia/Seoul'
+USE_TZ = False
+
 STATIC_ROOT = os.path.join(PROJECT_ROOT, 'staticfiles')
 STATIC_URL = '/static/'
 STATICFILES_DIRS = []

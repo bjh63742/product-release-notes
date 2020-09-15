@@ -63,6 +63,12 @@ class ReleaseNotesManager(models.Manager):
         return self.filter(
             is_published=True
         ).select_related('client')
+    
+    def relasedByid(self,_id):
+        print(_id)
+        return self.filter(
+            client=_id
+        ).select_related('client')
 
 
 @python_2_unicode_compatible

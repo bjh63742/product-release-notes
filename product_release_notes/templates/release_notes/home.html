@@ -1,0 +1,54 @@
+{% extends 'release_notes/base.html' %}
+
+{% load release_notes %}
+
+{% block release_notes_extra_head %}
+	{% release_notes_feed %}
+
+	<style type="text/css">
+		.latest-label {
+			text-transform: uppercase;
+			background: #4a90e2;
+			border-color: #4a90e2;
+			color: white;
+			padding: 0px 10px;
+			font-size: 10px;
+			font-weight: bold;
+			border-radius: 4px;
+			margin: 0 10px;
+			vertical-align: top;
+		}
+		.release-note-row .latest-label {
+			display: none;
+		}
+		.release-note-row:first-child .latest-label {
+			display: inline-block;
+		}
+		.markdown p {
+			white-space: pre-wrap;
+		}
+	</style>
+{% endblock %}
+
+{% block release_notes_body_header %}
+	<div class="text-center m-t-lg m-b-lg">
+		<h1 class="font-light">스마트 개발 2팀 릴리즈 노트</h1>
+		{% if page_description %}
+			<p>{{ page_description }}</p>
+		{% endif %}
+	</div>
+{% endblock %}
+
+{% block release_notes_body %}
+	<div class="container">
+		<div class="row">
+			<div class="col-md-8 col-md-offset-2">
+				{% for client in clients %}	
+					<li>
+						<a href="/{{client.id}}">{{client.name}}</a>
+					</li>
+				{% endfor %}
+			</div>
+		</div>
+	</div>
+{% endblock %}
