@@ -79,5 +79,8 @@ STATIC_ROOT = os.path.join(PROJECT_ROOT, 'staticfiles')
 STATIC_URL = '/static/'
 STATICFILES_DIRS = []
 
+MEDIA_ROOT = os.path.join(BASE_DIR,'media')
+MEDIA_URL='/media/'
+
 if ENVIRONMENT == ENVIRONMENT_HEROKU:
     STATICFILES_STORAGE = 'whitenoise.django.GzipManifestStaticFilesStorage'

@@ -84,11 +84,10 @@ class ReleaseNote(models.Model):
     notes = models.TextField(help_text='수정 사항')
     release_date = models.DateField(default=datetime.today, help_text='변경일')
     version = models.CharField(max_length=255, blank=True, db_index=True)
-
     is_published = models.BooleanField(default=False, help_text='해당 버전으로 출시 하였는가?')
-
     created = models.DateTimeField(auto_now_add=True)
     modified = models.DateTimeField(auto_now=True)
+    apk_file = models.FileField(upload_to='documents/%Y/%m/%d', blank=True, help_text='apk 파일 업로드')
 
     objects = ReleaseNotesManager()
 

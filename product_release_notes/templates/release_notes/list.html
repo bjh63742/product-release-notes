@@ -46,10 +46,11 @@
 							<div class="release-note m-b-lg">
 								<div class="release-note-header m-b-sm">
 									<p class="font-light" style="font-size: 24px; margin-bottom: 0; display: inline-block;">
-										<i class="fa fa-{{ release_note.client.icon }}"></i>
+										{% if release_note.is_published %} <i class="fa fa-{{ release_note.client.icon }}"></i>{% endif %}
 										{% if release_note.version %} &nbsp; Version: {{ release_note.version }}{% endif %}
 									</p>
 									<span class="latest-label">Latest</span>
+									{% if release_note.apk_file %} <a href="media/{{release_note.apk_file}}"">&nbsp; apk 다운로드</a> {% endif %}
 								</div>
 								<div class="text-upper font-bold m-b-sm">
 										변경일: {{ release_note.release_date.year }} 년 {{ release_note.release_date.month }} 월 {{ release_note.release_date.day }} 일
