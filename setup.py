@@ -70,6 +70,7 @@ setup(
         'requests',
         'markdown',
         'six',
+        'pdfkit'
     ],
     classifiers=[
         'Framework :: Django',
